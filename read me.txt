@@ -1,0 +1,240 @@
+1.工程搭建
+    1.1.创建父级工程:pom
+        对所有的jar包进行管理，没有实际性的任何代码
+    1.2.创建生产者和消费者工程
+        因为都是springboot架构，只需要使用jar工程即可
+        jar包如何添加:
+            consumer:
+                只和客户端打交道:
+                    如果有页面的话，需要thymeleaf
+                    web-starter--->@SpringBootApplication
+                    需要依赖于model
+
+                 BookController:
+                    public List<Book>
+                 而且这个项目是绝对不允许去操作数据库的，所以不需要依赖于service
+
+            provider:(需要使用service，需要使用mapper...)
+                只和数据库打交道:
+                    web-starter
+                    mybatis
+                    druid
+                    mysql
+
+                依赖于service
+
+    1.3.核心工程搭建
+        springcloud-management:
+            pom工程
+            -- springcloud-model(entity/domain)
+                不需要依赖，就是一个单纯放置实体类和包装类型(vo)的项目
+            -- springcloud-mapper
+                依赖于model
+            -- springcloud-service
+                依赖于mapper
+
+springboot项目的自动装配流程？(springboot面试题必问)
+
+
+
+
+20200616_homework:
+    1.把今天的代码敲一遍(理解)
+    2.自己预习eureka(需要一个文档，eureka的自我保护机制是什么，eureka所保证的特性，eureka的运行原理，为什么要保证这些特性)
+        (5遍起步)
+    3.自己去尝试写单节点eureka的实现(使用consumer去调用provider的时候使用eureka作为注册中心)
+
+
+!!!!!java基础(GC的算法，GC如何优化，数据库如何优化，高并发，内存模型，redis做队列如何保证数据不丢失....)
+jsp/servlet(一般不怎么问)
+!!!!!!SSM
+springboot的自动装配过程
+分布式锁
+如果有100万个数据，如何迭代？
+如果有100万个数字，其中只有两个是重复的，如何找出这两个重复的数字
+!!!!!!springcloud:
+    eureka(5个问题)
+
+给你一个kafka，你如何设计一个小黄车系统
+
+
+20200617:
+    1.什么是eureka？
+        eureka就是一个注册中心
+
+    !!!2.eureka的自我保护机制
+EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY'RE NOT.
+RENEWALS ARE LESSER THAN THRESHOLD AND HENCE THE INSTANCES ARE NOT BEING EXPIRED JUST TO BE SAFE.
+    当eureka出现长时间不唤醒，长时间不访问的时候就会出现自我保护机制
+    面试题:
+        为什么eureka要出现自我保护机制？
+            有时候咱们国家的网络会出现短暂网络波动(网络阻塞)
+            因为网络阻塞导致eureka无法检测到provider的存在
+            假设目前eureka中有200个provider，如果只有三台无法检测到心跳(默认时间为90s(但是根据集群情况会自动调节(30/60/90s)))
+            也就是说eureka会90s去接收一次provider的心跳
+            这个时候eureka并不会采取任何措施(再给provider一次机会)，如果第二次还没有接收到provider的心跳
+            eureka就会直接把这三台provider剔除(剩余197台)--->也就是说修改provider的状态(up--->down)
+            如果eureka检测时候发现其中的180台provider都没有心跳(就不会再剔除任何的服务)
+            把这些服务缓存进自己，等待consumer来调用的时候，直接把缓存的数据返回给consumer
+            (目前已经无法接收到180台provider，但是其中150台之前consumer调用过，剩余30台没有调用过)
+            当consumer来调用剩余30台的时候，eureka就会直接抛出异常，告诉consumer这30台已经宕机了
+            (这个界限就是过半(大面积)的provider如果宕机，则不会剔除，否则eureka就会直接把provider剔除)
+
+        自我保护机制就是为了体现eureka的AP性(高可用性)
+        zookeeper保证了CP性(数据一致性)
+
+    3.有些情况其实并不适用可用性，所以有时候需要关闭eureka的自我保护
+        (不推荐使用)(实际开发中并没有人这么去做)
+        在eureka的服务器端进行配置
+            eureka.server.enable-self-preservation=false
+        当关闭eureka的比我保护机制的之后会提示一句话:
+            THE SELF PRESERVATION MODE IS TURNED OFF. THIS MAY NOT PROTECT INSTANCE EXPIRY IN CASE OF NETWORK/OTHER PROBLEMS.
+
+    4.失效eureka的自我保护机制
+        !!!!!!实际开发中会让自我保护机制失效，并不会直接关闭!!!!!
+        在集群中体现的比较明显，在单节点中没有体现
+        假设现在有三台eureka，其中让两台实现可用性，其中一台实现一致性(失效自我保护机制)
+        eureka01，eureka02，eureka03
+        eureka01和eureka02让商品的provider注册
+        eureka03让order的provider进行注册
+
+        eureka会定期的向provider检测心跳
+        provider也会定期的向eureka发送心跳
+            在provider中进行配置:
+                让provider告诉eureka，现在我5秒向你发送一次心跳
+                11:07:30--->是最后一次心跳
+                往后数8s之后没有接收我心跳，你可以直接把我剔除(实际开发中5s不合适)
+                在国内经常会出现短暂的网络波动(1-3s)(一般情况下6-9s之间都可以)
+
+             在eureka中进行配置:
+                eureka去检测provider的心跳
+                配置的时间一定要大于5s，小于等于8s
+
+
+20200617_homework:
+    1.把今天所有概念全部会背(周六必问的)
+    2.把今天的所有知识点全部弄明白
+    3.把今天的代码敲一遍
+    4.自己去写集群模式
+    5.预习ribbon(要文档--->ribbon负载均衡的算法文档(8种))
+
+
+
+20200618:
+    1.ribbon
+        ribbon称之为客户端层面的负载均衡，和nginx不一样
+        nginx叫做服务器端的负载均衡
+
+        在你的项目中，你选择是客户端的负载均衡还是服务器端的负载均衡？(这个问题本身有毛病)
+            都用
+
+        无论以下讲的所有组件，如果不是强制排除，所有的组件都需要默认依赖于eureka(也就是说所有组件默认都要添加eureka的客户端的jar包)
+
+    ribbon轮询策略和nginx不一样:
+        ribbon会记录上一次的访问地址
+        然后开始轮询--->8082--->8083
+        按照道理来说应该访问8081
+        8081-->8082-->8083
+        ribbon会随机一个8082-->8083-->8081
+        再随机
+        ...
+
+20200618_homework:
+    1.把今天的代码敲一遍
+    2.把今天的整个random源码总结一遍(文档)
+    3.自己尝试完成ribbon脱离eureka实现负载均衡
+    ****4.预习feign
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

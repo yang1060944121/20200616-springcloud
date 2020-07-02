@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/20200616-springcloud.iml" filepath="$PROJECT_DIR$/20200616-springcloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/20200616-springcloud-consumer/20200616-springcloud-consumer.iml" filepath="$PROJECT_DIR$/20200616-springcloud-consumer/20200616-springcloud-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/20200616-springcloud-management/20200616-springcloud-management.iml" filepath="$PROJECT_DIR$/20200616-springcloud-management/20200616-springcloud-management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/20200616-springcloud-management/20200616-springcloud-mapper/20200616-springcloud-mapper.iml" filepath="$PROJECT_DIR$/20200616-springcloud-management/20200616-springcloud-mapper/20200616-springcloud-mapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/20200616-springcloud-management/20200616-springcloud-model/20200616-springcloud-model.iml" filepath="$PROJECT_DIR$/20200616-springcloud-management/20200616-springcloud-model/20200616-springcloud-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/20200616-springcloud-provider/20200616-springcloud-provider.iml" filepath="$PROJECT_DIR$/20200616-springcloud-provider/20200616-springcloud-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/20200616-springcloud-management/20200616-springcloud-service/20200616-springcloud-service.iml" filepath="$PROJECT_DIR$/20200616-springcloud-management/20200616-springcloud-service/20200616-springcloud-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/20200617-springcloud-eureka-management/20200617-springcloud-eureka-management.iml" filepath="$PROJECT_DIR$/20200617-springcloud-eureka-management/20200617-springcloud-eureka-management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/20200617-springcloud-eureka-management/20200618-eureka-6082/20200618-eureka-6082.iml" filepath="$PROJECT_DIR$/20200617-springcloud-eureka-management/20200618-eureka-6082/20200618-eureka-6082.iml" />
+      <module fileurl="file://$PROJECT_DIR$/20200617-springcloud-eureka-management/20200618-eureka-6083/20200618-eureka-6083.iml" filepath="$PROJECT_DIR$/20200617-springcloud-eureka-management/20200618-eureka-6083/20200618-eureka-6083.iml" />
+      <module fileurl="file://$PROJECT_DIR$/20200618-springcloud-consumer-ribbon/20200618-springcloud-consumer-ribbon.iml" filepath="$PROJECT_DIR$/20200618-springcloud-consumer-ribbon/20200618-springcloud-consumer-ribbon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/20200618-springcoud-provider-8082/20200618-springcoud-provider-8082.iml" filepath="$PROJECT_DIR$/20200618-springcoud-provider-8082/20200618-springcoud-provider-8082.iml" />
+      <module fileurl="file://$PROJECT_DIR$/20200618-springcoud-provider-8083/20200618-springcoud-provider-8083.iml" filepath="$PROJECT_DIR$/20200618-springcoud-provider-8083/20200618-springcoud-provider-8083.iml" />
+      <module fileurl="file://$PROJECT_DIR$/20200617-springcloud-eureka-management/202020617-eureka-6081/202020617-eureka-6081.iml" filepath="$PROJECT_DIR$/20200617-springcloud-eureka-management/202020617-eureka-6081/202020617-eureka-6081.iml" />
+    </modules>
+  </component>
+</project>

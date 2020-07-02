@@ -1,0 +1,12 @@
+# Project exclude paths
+/20200616-springcloud-consumer/target/
+/20200616-springcloud-management/20200616-springcloud-mapper/target/
+/20200616-springcloud-management/20200616-springcloud-model/target/
+/20200616-springcloud-management/20200616-springcloud-service/target/
+/20200616-springcloud-provider/target/
+/20200617-springcloud-eureka-management/20200618-eureka-6082/target/
+/20200617-springcloud-eureka-management/20200618-eureka-6083/target/
+/20200617-springcloud-eureka-management/202020617-eureka-6081/target/
+/20200618-springcloud-consumer-ribbon/target/
+/20200618-springcoud-provider-8082/target/
+/20200618-springcoud-provider-8083/target/

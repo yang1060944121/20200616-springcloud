@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="202020617-eureka-6081" />
+        <module name="20200618-eureka-6082" />
+        <module name="20200616-springcloud-mapper" />
+        <module name="20200616-springcloud-model" />
+        <module name="20200618-springcoud-provider-8083" />
+        <module name="20200618-springcoud-provider-8082" />
+        <module name="20200616-springcloud-provider" />
+        <module name="20200618-springcloud-consumer-ribbon" />
+        <module name="20200618-eureka-6083" />
+        <module name="20200616-springcloud-service" />
+        <module name="20200616-springcloud-consumer" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="20200616-springcloud" target="1.8" />
+      <module name="20200616-springcloud-consumer" target="1.8" />
+      <module name="20200616-springcloud-management" target="1.8" />
+      <module name="20200616-springcloud-mapper" target="1.8" />
+      <module name="20200616-springcloud-model" target="1.8" />
+      <module name="20200616-springcloud-provider" target="1.8" />
+      <module name="20200616-springcloud-service" target="1.8" />
+      <module name="20200617-springcloud-eureka-management" target="1.8" />
+      <module name="20200618-eureka-6082" target="1.8" />
+      <module name="20200618-eureka-6083" target="1.8" />
+      <module name="20200618-springcloud-consumer-ribbon" target="1.8" />
+      <module name="20200618-springcoud-provider-8082" target="1.8" />
+      <module name="20200618-springcoud-provider-8083" target="1.8" />
+      <module name="202020617-eureka-6081" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
